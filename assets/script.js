@@ -98,7 +98,22 @@ function newQuiz() {
     nextQuestion();
 };
 
-function nextQuestion() {}
+// Click events //
+
+startbutton.addEventListener("click", newQuiz);
+optionA.addEventListener("click", chooseA);
+optionB.addEventListener("click", chooseB);
+optionC.addEventListener("click", chooseC);
+optionD.addEventListener("click", chooseD);
+
+// Question cycle //
+function nextQuestion() {
+    questionTitle.textContent = questions[Index].question;
+    optionA.textContent = questions[Index].options[0];
+    optionB.textContent = questions[Index].options[1];
+    optionC.textContent = questions[Index].options[2];
+    optionD.textContent = questions[Index].options[3];
+}
 
 function checkAnswer() {}
 
