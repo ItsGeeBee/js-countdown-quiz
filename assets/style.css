@@ -1,0 +1,95 @@
+
+  body{
+    min-height: 100%;
+    height: 100%;
+    width: auto;
+    padding-top: 5%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+  }
+  
+
+h1, 
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+	align-items: center;
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+}
+
+a:hover {
+    color: #99B8BF;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+#timesup {
+
+    font-weight: bold;
+    color: #ef420d;
+
+}
+
+#timer {
+    margin-top: 20%;
+    padding: 20px,20px,20px,0;
+}
+
+#primaryDiv {
+    min-height: 100%;
+    height: 100%;
+    width: auto;
+    padding-top: 10%;
+    margin-left: -10%;
+    justify-content: center;
+}
+
+a {
+    color: #690796;
+    font-size: 90%;
+    font-family:  Arial, Helvetica, sans-serif;
+    padding-bottom: 25%;
+}
+
+
+/* .btn:focus, .btn:active, .btn:visited {
+    outline: none !important;
+    box-shadow: none !important;
+} */
+
+.container-fluid {
+display: flex;
+justify-content: wrap;
+}
+
+
+#finalScore {
+    font-family:  Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#timer {
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p {
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+#questionTitle {
+    font-size: 25px;
+    font-family:  Arial, Helvetica, sans-serif;
+  }
+#answerCheck {
+    font-style: italic;
+
+}
