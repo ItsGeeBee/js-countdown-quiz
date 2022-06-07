@@ -37,3 +37,41 @@
         question: "JavaScript is the same as Java", options: ["a. False", "b. True", "c. Depends who you ask", "d. Java is the updated version of Javascript"], answer: "a. False"
     }
 ];
+
+// DOM elements //
+
+// countdown timer //
+var timer = document.getElementById("timer");
+var timeRemaining = document.getElementById("timeRemaining");
+var timesUp = document.getElementById("timesUp");
+// Visible on launch //
+var landingDiv = document.getElementById("landing");
+var startbutton = document.getElementById("start-button");
+
+// Questions and buttons //
+var questionDiv = document.getElementById("questionDiv");
+var questionTitle = document.getElementById("questionTitle");
+var optionA = document.getElementById("btn0");
+var optionB = document.getElementById("btn1");
+var optionC = document.getElementById("btn2");
+var optionD = document.getElementById("btn3");
+// results //
+var answerCheck = document.getElementById("answerCheck");
+var results = document.getElementById("results");
+var submitInitialBtn = document.getElementById("submitInitialBtn");
+// high scores //
+var userDetails = document.getElementById("userDetails");
+var highScoreSection = document.getElementById("highScoreSection");
+var finalScore = document.getElementById("finalScore");
+// end screen //
+var goBackBtn = document.getElementById("goBackBtn");
+var clearHighScoreBtn = document.getElementById("clearHighScoreBtn"); 
+var highScoreList = document.getElementById("highScoreList");
+
+function newQuiz() {}
+
+function nextQuestion() {}
+
+function checkAnswer() {}
+
+function endQuiz() {}
