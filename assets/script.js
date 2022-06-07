@@ -68,7 +68,35 @@ var goBackBtn = document.getElementById("goBackBtn");
 var clearHighScoreBtn = document.getElementById("clearHighScoreBtn"); 
 var highScoreList = document.getElementById("highScoreList");
 
-function newQuiz() {}
+// Global Variables //
+var Index = 0;
+var questionNum = 0;
+var correctAnswer = 0;
+var scoreResult;
+
+// Timer - 60seconds on the clock //
+function newQuiz() {
+    totalTime = 60;
+    timeRemaining.textContent = totalTime;
+
+    landingDiv.style.display = "none";
+    questionDiv.style.display = "block"; // show this section only 
+    timer.style.display = "block"; // show this section only 
+    timesUp.style.display = "none";
+
+    var startTimer = setInterval(function() {
+        totalTime--;
+        timeRemaining.textContent = totalTime;
+        if(totalTime <= 0) {
+            clearInterval(startTimer);
+            if (Index < questions.length - 1) {
+                endQuiz();
+            }
+        }
+    },1000);
+
+    nextQuestion();
+};
 
 function nextQuestion() {}
 
