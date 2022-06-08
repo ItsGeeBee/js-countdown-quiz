@@ -105,6 +105,8 @@ optionB.addEventListener("click", chooseB);
 optionC.addEventListener("click", chooseC);
 optionD.addEventListener("click", chooseD);
 
+
+
 // Question cycle //
 function nextQuestion() {
     questionTitle.textContent = questions[Index].question;
@@ -112,6 +114,19 @@ function nextQuestion() {
     optionB.textContent = questions[Index].options[1];
     optionC.textContent = questions[Index].options[2];
     optionD.textContent = questions[Index].options[3];
+}
+
+function chooseA() { 
+    checkAnswer(0); 
+} 
+function chooseB() {
+     checkAnswer(1); 
+}
+function chooseC() { 
+    checkAnswer(2); 
+}
+function chooseD() { 
+    checkAnswer(3); 
 }
 
 // If answer is correct yay, if answer is incorrect, time will be reduced by 5 seconds //
@@ -139,18 +154,13 @@ function checkAnswer(answer) {
     }
 }
 
-function chooseA() { 
-    checkAnswer(0); 
-} 
-function chooseB() {
-     checkAnswer(1); 
-}
-function chooseC() { 
-    checkAnswer(2); 
-}
-function chooseD() { 
-    checkAnswer(3); 
-}
+function endQuiz() {
+    results.style.display = "block"; // show this section only 
+    questionDiv.style.display = "none";
+    landingDiv.style.display = "none";
+    timer.style.display = "none";
+    timesUp.style.display = "block"; // show this section only 
 
-
-function endQuiz() {}
+    // show final score = totaltime left //
+    finalScore.textContent = totalTime;
+}
