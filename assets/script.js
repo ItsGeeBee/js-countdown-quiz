@@ -72,7 +72,6 @@ var highScoreList = document.getElementById("highScoreList");
 var Index = 0;
 var questionNum = 0;
 var correctAnswer = 0;
-var scoreResult;
 
 // Timer - 60seconds on the clock //
 function newQuiz() {
@@ -115,6 +114,43 @@ function nextQuestion() {
     optionD.textContent = questions[Index].options[3];
 }
 
-function checkAnswer() {}
+// If answer is correct yay, if answer is incorrect, time will be reduced by 5 seconds //
+function checkAnswer(answer) {
+
+    answerCheck.style.display = "block"; // show this section only 
+
+    if (questions[Index].answer == questions[Index].options[answer]) {
+        correctAnswer++;
+        answerCheck.textContent = "Well done! Thats the right answer.";
+    } else {
+        totalTime -= 5;
+        timeRemaining.textContent = totalTime;
+        answerCheck.textContent = "Incorrect";
+    }
+
+    Index++;
+ 
+    // if no more questions left, end the quiz //
+    if (Index < questions.length) {
+        nextQuestion();
+    } else {
+        
+        endQuiz();
+    }
+}
+
+function chooseA() { 
+    checkAnswer(0); 
+} 
+function chooseB() {
+     checkAnswer(1); 
+}
+function chooseC() { 
+    checkAnswer(2); 
+}
+function chooseD() { 
+    checkAnswer(3); 
+}
+
 
 function endQuiz() {}
