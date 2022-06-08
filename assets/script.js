@@ -164,3 +164,17 @@ function endQuiz() {
     // show final score = totaltime left //
     finalScore.textContent = totalTime;
 }
+// log into local storage //
+function storeHighScores(event) {
+    event.preventDefault();
+
+    timesUp.style.display = "none";
+    results.style.display = "none";
+    landingDiv.style.display = "none";
+    timer.style.display = "none";
+    highScoreSection.style.display = "block";  // show this section only 
+
+    var savedHighScores = localStorage.getItem("high scores");
+    var scoresArray;
+
+}
