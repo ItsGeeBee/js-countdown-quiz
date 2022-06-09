@@ -111,16 +111,15 @@ function nextQuestion() {
 // If answer is correct yay, if answer is incorrect, time will be reduced by 5 seconds //
 function checkAnswer(answer) {
 
-    answerCheck.style.display = "block"; // show this section only 
-
-    if (questions[Index].answer == questions[Index].options[answer]) {
-        correctAnswer++;
-        answerCheck.textContent = "Well done! Thats the right answer.";
-    } else {
-        totalTime -= 5;
-        timeRemaining.textContent = totalTime;
-        answerCheck.textContent = "Incorrect";
-    }
+answerCheck.style.display = "block"; // show this section only 
+if (questions[Index].answer == questions[Index].options[answer]) {
+    correctAnswer++;
+answerCheck.textContent = "Well done!";
+} else {
+totalTime -= 5;
+timeRemaining.textContent = totalTime;
+answerCheck.textContent = "Incorrect";
+}
 Index++;
  
     // if no more questions left, end the quiz //
