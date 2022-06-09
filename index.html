@@ -4,54 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Countdown</title>
+
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <!-- highscores and timer -->
-        <div class="row">
-            </div>
-            <div id="timer">
-                Time: <span id="timeLeft">0</span>
-            </div>
-            <div id="timesUp" style="display: none;">Time's Up!</div>
-        </div>
+    <div>
     </div>
+    <div id="timer">Time: <span id="timeRemaining">0</span>
+    </div>
+<div id="timesUp" style="display: none;">Time's Up!</div>
+    </div></div>
 
-        <div id="primaryDiv">
+<div id="primaryDiv">
                   <!--Screen on load -->
-                  <div id="landing">
-                      <h1>Quiz Countdown</h1>
-                      <p>Get ready for the most exciting yet boring quiz ever! Incorrect answers will reduce your time by ten seconds!</p>
-                      <button type="button" id="start-button">Start Quiz</button>
-                  </div>
+<div id="landing">
 
-                  <!--quiz -->
-                  <div id="questionDiv" style="display: none;">
-                    <p id="questionTitle"></p>
-                        <p><button id="btn0"></button></p>
-                        <p><button id="btn1"></button></p>
-                        <p><button id="btn2"></button></p>
-                        <p><button id="btn3"></button></p>
-                        <p id="answerCheck" style="display: none;"></p>
-                  </div>
+<h1>Quiz Countdown</h1>
+<p>Get ready for the most exciting yet boring quiz ever! Incorrect answers will reduce your time by ten seconds!</p>
+<button type="button" id="start-button">Start Quiz</button></div>
 
-                  <!-- results -->
-                    <div id="summary" style="display: none;">
-                            <h2>Your end score is <span id="finalScore"></span></h2>
-                            <form>
-                                <p>Enter your initials: <input id="initialInput" type="text">
-                                <button type="submit" id="submitInitialBtn" class="btn">Submit</button>
-                                </p>
-                            </form>
+<!--Questions and options for answers -->  
+<div id="questionDiv" style="display: none;">
+ <p id="questionTitle"></p>
+ <p><button id="btn0"></button></p>
+<p><button id="btn1"></button></p>
+<p><button id="btn2"></button></p>
+<p><button id="btn3"></button></p>
+ <p id="answerCheck" style="display: none;"></p>
+</div>
+
+<!--results --><div id="results" style="display: none;">
+<h2>Your end score is <span id="finalScore"></span></h2>
+<p>Enter your initials: <input id="userDetails" type="text">
+<button type="submit" id="submitInitialBtn" class="btn">Submit</button>
+</p>
+                            
                 </div>
 
                 <!-- highscores -->
                 <div id="highScoreSection"  style="display: none;">
                     <h2 class="headerhighscores">High Scores</h2>                   
-                    
-                    <div id="listOfHighScores"></div>
                     <p>
                         <button type="submit" id="goBackBtn">Go Back</button>
                         <button type="submit" id="clearHighScoreBtn">Clear High Scores</button>
@@ -59,8 +54,9 @@
                 </div>
         </div>
     </div>
-
+    
     <!-- linking js -->
     <script src="assets/script.js"></script>
 </body>
 </html>
+

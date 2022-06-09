@@ -41,32 +41,29 @@
 // DOM elements //
 
 // countdown timer //
-var timer = document.getElementById("timer");
-var timeRemaining = document.getElementById("timeRemaining");
-var timesUp = document.getElementById("timesUp");
+var timer=document.getElementById("timer");
+var timeRemaining=document.getElementById("timeRemaining");
+var timesUp=document.getElementById("timesUp");
 // Visible on launch //
-var landingDiv = document.getElementById("landing");
-var startbutton = document.getElementById("start-button");
-
+var landingDiv=document.getElementById("landing");
+var startbutton=document.getElementById("start-button");
 // Questions and buttons //
-var questionDiv = document.getElementById("questionDiv");
+var questionDiv= document.getElementById("questionDiv");
 var questionTitle = document.getElementById("questionTitle");
 var optionA = document.getElementById("btn0");
-var optionB = document.getElementById("btn1");
+var optionB=document.getElementById("btn1");
 var optionC = document.getElementById("btn2");
-var optionD = document.getElementById("btn3");
-// results //
+var optionD=document.getElementById("btn3");
+// results & highscores//
 var answerCheck = document.getElementById("answerCheck");
 var results = document.getElementById("results");
-var submitInitialBtn = document.getElementById("submitInitialBtn");
-// high scores //
+var submitInitialBtn= document.getElementById("submitInitialBtn");
 var userDetails = document.getElementById("userDetails");
 var highScoreSection = document.getElementById("highScoreSection");
-var finalScore = document.getElementById("finalScore");
+var finalScore= document.getElementById("finalScore");
 // end screen //
 var goBackBtn = document.getElementById("goBackBtn");
-var clearHighScoreBtn = document.getElementById("clearHighScoreBtn"); 
-var highScoreList = document.getElementById("highScoreList");
+var clearHighScoreBtn =document.getElementById("clearHighScoreBtn"); 
 
 // Global Variables //
 var Index = 0;
@@ -76,16 +73,11 @@ var correctAnswer = 0;
 // Timer - 60seconds on the clock //
 function newQuiz() {
     totalTime = 60;
-    timeRemaining.textContent = totalTime;
-
-    landingDiv.style.display = "none";
-    questionDiv.style.display = "block"; // show this section only 
-    timer.style.display = "block"; // show this section only 
-    timesUp.style.display = "none";
+    timeRemaining.textContent = totalTime; 
 
     var startTimer = setInterval(function() {
-        totalTime--;
-        timeRemaining.textContent = totalTime;
+        totalTime--; timeRemaining.textContent = totalTime;
+        // if time runs out or there a no questions left, end quiz function triggered //
         if(totalTime <= 0) {
             clearInterval(startTimer);
             if (Index < questions.length - 1) {
@@ -95,6 +87,11 @@ function newQuiz() {
     },1000);
 
     nextQuestion();
+    questionDiv.style.display = "block"; // show this section only 
+    timer.style.display = "block"; // show this section only 
+    timesUp.style.display = "none";
+    landingDiv.style.display = "none";
+
 };
 
 // Click events //
@@ -105,8 +102,6 @@ optionB.addEventListener("click", chooseB);
 optionC.addEventListener("click", chooseC);
 optionD.addEventListener("click", chooseD);
 
-
-
 // Question cycle //
 function nextQuestion() {
     questionTitle.textContent = questions[Index].question;
@@ -114,19 +109,6 @@ function nextQuestion() {
     optionB.textContent = questions[Index].options[1];
     optionC.textContent = questions[Index].options[2];
     optionD.textContent = questions[Index].options[3];
-}
-
-function chooseA() { 
-    checkAnswer(0); 
-} 
-function chooseB() {
-     checkAnswer(1); 
-}
-function chooseC() { 
-    checkAnswer(2); 
-}
-function chooseD() { 
-    checkAnswer(3); 
 }
 
 // If answer is correct yay, if answer is incorrect, time will be reduced by 5 seconds //
@@ -154,6 +136,20 @@ function checkAnswer(answer) {
     }
 }
 
+// checks array for matching answer //
+function chooseA() { 
+    checkAnswer(0); 
+} 
+function chooseB() {
+     checkAnswer(1); 
+}
+function chooseC() { 
+    checkAnswer(2); 
+}
+function chooseD() { 
+    checkAnswer(3); 
+}
+
 function endQuiz() {
     results.style.display = "block"; // show this section only 
     questionDiv.style.display = "none";
@@ -164,6 +160,7 @@ function endQuiz() {
     // show final score = totaltime left //
     finalScore.textContent = totalTime;
 }
+
 // log into local storage //
 function storeHighScores(event) {
     event.preventDefault();
@@ -177,4 +174,25 @@ function storeHighScores(event) {
     var savedHighScores = localStorage.getItem("high scores");
     var scoresArray;
 
+    if (savedHighScores == null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighScores)
+    }
+
+    var userScore = {
+        initials: userDetails.value,
+        score: finalScore.textContent
+    };
+
+    console.log(userScore);
+    scoresArray.push(userScore);
+
+    // stringify to store in local storage
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+    
+    showHighScores();
 }
+
+function showHighScores() {}

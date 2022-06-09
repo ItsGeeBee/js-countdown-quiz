@@ -58,8 +58,17 @@ a {
     padding-bottom: 25%;
 }
 
+#questionTitle {
+    font-size: 25px;
+    font-family:  Arial, Helvetica, sans-serif;
+  }
+#answerCheck {
+    font-style: italic;
 
-.container-fluid {
+}
+
+
+.container {
 display: flex;
 justify-content: wrap;
 }
@@ -78,13 +87,4 @@ justify-content: wrap;
 
 p {
     font-family:  Arial, Helvetica, sans-serif;
-}
-
-#questionTitle {
-    font-size: 25px;
-    font-family:  Arial, Helvetica, sans-serif;
-  }
-#answerCheck {
-    font-style: italic;
-
 }
