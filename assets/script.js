@@ -50,17 +50,17 @@ var startbutton=document.getElementById("start-button");
 // Questions and buttons //
 var questionDiv= document.getElementById("questionDiv");
 var questionTitle = document.getElementById("questionTitle");
-var optionA = document.getElementById("btn0");
-var optionB=document.getElementById("btn1");
-var optionC = document.getElementById("btn2");
-var optionD=document.getElementById("btn3");
+var optionA=document.getElementById("buttonA");
+var optionB= document.getElementById("buttonB");
+var optionC=document.getElementById("buttonC");
+var optionD =document.getElementById("buttonD");
 // results & highscores//
 var answerCheck = document.getElementById("answerCheck");
 var results = document.getElementById("results");
 var submitInitialBtn= document.getElementById("submitInitialBtn");
 var userDetails = document.getElementById("userDetails");
 var highScoreSection = document.getElementById("highScoreSection");
-var finalScore= document.getElementById("finalScore");
+var endScore= document.getElementById("endScore");
 // end screen //
 var goBackBtn = document.getElementById("goBackBtn");
 var clearHighScoreBtn =document.getElementById("clearHighScoreBtn"); 
@@ -72,29 +72,26 @@ var correctAnswer = 0;
 
 // Timer - 60seconds on the clock //
 function newQuiz() {
-    totalTime = 60;
-    timeRemaining.textContent = totalTime; 
-
-    var startTimer = setInterval(function() {
-        totalTime--; timeRemaining.textContent = totalTime;
+ totalTime = 60;
+ timeRemaining.textContent = totalTime; 
+ var startTimer = setInterval(function() {
+totalTime--; timeRemaining.textContent = totalTime;
         // if time runs out or there a no questions left, end quiz function triggered //
-        if(totalTime <= 0) {
-            clearInterval(startTimer);
-            if (Index < questions.length - 1) {
-                endQuiz();
-            }
-        }
-    },1000);
+if(totalTime <= 0) {
+ clearInterval(startTimer);
+if (Index < questions.length - 1) {
+endQuiz();          
+}}
+ },1000);
+ nextQuestion();
 
-    nextQuestion();
     questionDiv.style.display = "block"; // show this section only 
     timer.style.display = "block"; // show this section only 
     timesUp.style.display = "none";
     landingDiv.style.display = "none";
-
 };
 
-// Click events //
+// Click events- if option A is clicked run Choose A function to determine if this is the correct answer
 
 startbutton.addEventListener("click", newQuiz);
 optionA.addEventListener("click", chooseA);
@@ -102,13 +99,13 @@ optionB.addEventListener("click", chooseB);
 optionC.addEventListener("click", chooseC);
 optionD.addEventListener("click", chooseD);
 
-// Question cycle //
+// Question cycle - links up text options on the webpage and the options in the question array //
 function nextQuestion() {
-    questionTitle.textContent = questions[Index].question;
-    optionA.textContent = questions[Index].options[0];
-    optionB.textContent = questions[Index].options[1];
-    optionC.textContent = questions[Index].options[2];
-    optionD.textContent = questions[Index].options[3];
+    questionTitle.textContent= questions[Index].question;
+    optionA.textContent= questions[Index].options[0];
+    optionB.textContent= questions[Index].options[1];
+    optionC.textContent= questions[Index].options[2];
+    optionD.textContent= questions[Index].options[3];
 }
 
 // If answer is correct yay, if answer is incorrect, time will be reduced by 5 seconds //
@@ -124,17 +121,14 @@ function checkAnswer(answer) {
         timeRemaining.textContent = totalTime;
         answerCheck.textContent = "Incorrect";
     }
-
-    Index++;
+Index++;
  
     // if no more questions left, end the quiz //
-    if (Index < questions.length) {
-        nextQuestion();
+if (Index < questions.length) {
+    nextQuestion();
     } else {
-        
-        endQuiz();
-    }
-}
+    endQuiz();
+}}
 
 // checks array for matching answer //
 function chooseA() { 
@@ -158,18 +152,22 @@ function endQuiz() {
     timesUp.style.display = "block"; // show this section only 
 
     // show final score = totaltime left //
-    finalScore.textContent = totalTime;
+    endScore.textContent = totalTime;
 }
+
+// submit user initials to store //
+submitInitialBtn.addEventListener("click", function(event){ 
+    storeHighScores(event);
+});
 
 // log into local storage //
 function storeHighScores(event) {
-    event.preventDefault();
-
-    timesUp.style.display = "none";
-    results.style.display = "none";
-    landingDiv.style.display = "none";
-    timer.style.display = "none";
-    highScoreSection.style.display = "block";  // show this section only 
+event.preventDefault();
+ timesUp.style.display = "none";
+results.style.display = "none";
+landingDiv.style.display = "none";
+timer.style.display = "none";
+highScoreSection.style.display = "block";  // show this section only 
 
     var savedHighScores = localStorage.getItem("high scores");
     var scoresArray;
@@ -179,14 +177,13 @@ function storeHighScores(event) {
     } else {
         scoresArray = JSON.parse(savedHighScores)
     }
-
-    var userScore = {
+    var userScore = { //userScore = userdetails and timer left on the clock //
         initials: userDetails.value,
-        score: finalScore.textContent
+        score: endScore.textContent
     };
 
-    console.log(userScore);
-    scoresArray.push(userScore);
+    console.log(userScore); // log to the console 
+    scoresArray.push(userScore); // add the Userscore to the scores array //
 
     // stringify to store in local storage
     var scoresArrayString = JSON.stringify(scoresArray);
@@ -195,4 +192,37 @@ function storeHighScores(event) {
     showHighScores();
 }
 
-function showHighScores() {}
+// function to show high scores //
+function showHighScores() {
+    var savedHighScores = localStorage.getItem("high scores");
+    // if there are no highscores end fuction //
+if (savedHighScores == null) { return; }
+    console.log(savedHighScores);
+    
+var storedHighScores = JSON.parse(savedHighScores); // parse = retrieve
+     for (i = 0; i < storedHighScores.length; i++) {
+    var eachNewHighScore = document.createElement("p"); // Outputs newhighscore into <P> element and stores high score //
+    eachNewHighScore.innerHTML = storedHighScores[i].initials + "- " + storedHighScores[i].score;
+     savedHighscores.appendChild(eachNewHighScore); 
+        }
+    
+landingDiv.style.display ="none";
+timer.style.display ="none";
+questionDiv.style.display= "none";
+timesUp.style.display ="none";
+results.style.display= "none";
+highScoreSection.style.display = "block"; // show this section only //
+}
+    
+    
+    // got back to the start //
+ goBackBtn.addEventListener("click", function() {
+landingDiv.style.display = "block"; // shows landing page again to restart quiz //
+ highScoreSection.style.display = "none"; 
+    });
+    
+    // remove list of high scores from local storage //
+    clearHighScoreBtn.addEventListener("click", function(){
+    window.localStorage.removeItem("high scores"); // removed stored highscores from local storage //
+    savedHighscores.innerHTML = "High Scores Cleared"; // text shownn on webpage after clearing savedhighscores
+    });

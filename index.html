@@ -23,40 +23,35 @@
 <div id="landing">
 
 <h1>Quiz Countdown</h1>
-<p>Get ready for the most exciting yet boring quiz ever! Incorrect answers will reduce your time by ten seconds!</p>
+<p>Get ready for the most exciting yet boring quiz ever! Incorrect answers will reduce your time by 5 seconds!</p>
 <button type="button" id="start-button">Start Quiz</button></div>
 
 <!--Questions and options for answers -->  
 <div id="questionDiv" style="display: none;">
- <p id="questionTitle"></p>
- <p><button id="btn0"></button></p>
-<p><button id="btn1"></button></p>
-<p><button id="btn2"></button></p>
-<p><button id="btn3"></button></p>
- <p id="answerCheck" style="display: none;"></p>
-</div>
+    <p id="questionTitle"></p>
+    <p><button id="buttonA"></button></p>
+    <p><button id="buttonB"></button></p>
+    <p><button id="buttonC"></button></p>
+    <p><button id="buttonD"></button></p>
+    <p id="answerCheck" style="display: none;"></p></div>
 
 <!--results --><div id="results" style="display: none;">
-<h2>Your end score is <span id="finalScore"></span></h2>
+<h2>Your end score is <span id="endScore"></span></h2>
 <p>Enter your initials: <input id="userDetails" type="text">
 <button type="submit" id="submitInitialBtn" class="btn">Submit</button>
-</p>
-                            
-                </div>
+</p> </div>
 
                 <!-- highscores -->
-                <div id="highScoreSection"  style="display: none;">
-                    <h2 class="headerhighscores">High Scores</h2>                   
-                    <p>
-                        <button type="submit" id="goBackBtn">Go Back</button>
-                        <button type="submit" id="clearHighScoreBtn">Clear High Scores</button>
-                    </p>  
-                </div>
-        </div>
-    </div>
-    
-    <!-- linking js -->
-    <script src="assets/script.js"></script>
+ <div id="highScoreSection"  style="display: none;">
+    <h2 class="headerhighscores">High Scores</h2>                   
+    <div id="savedHighscores"></div>
+     <p>
+    <button type="submit" id="goBackBtn">Go Back</button>
+    <button type="submit" id="clearHighScoreBtn">Clear High Scores</button>
+     </p>  
+ </div></div> </div>
+ <!-- linking js -->
+ <script src="assets/script.js"></script>
 </body>
 </html>
 
